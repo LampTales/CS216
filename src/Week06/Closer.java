@@ -1,6 +1,5 @@
 package Week06;
 
-import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -71,7 +70,7 @@ public class Closer {
 
         int cnt = 0;
         for (int i = 0; i < xEnd - xStart + 1; i++) {
-            if (Math.abs(yRank[i].x - div.x) < totalMin) {
+            if (((long)(yRank[i].x - div.x)) * (yRank[i].x - div.x) < totalMin) {
                 yRank[cnt] = yRank[i];
                 cnt++;
             }
