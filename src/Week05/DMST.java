@@ -43,7 +43,8 @@ public class DMST {
         n = n + 1;
 
         long ans = 0;
-        int getIn = -1;
+        int ori = -1;
+
         while (true) {
             for (int i = 0; i < n; i++) {
                 nodes[i].clean();
@@ -79,14 +80,15 @@ public class DMST {
                     nodes[x].visit = i;
                     save = nodes[x].enter;
                     x = nodes[x].enter.from;
-
                 }
-                if (x == root && flag) {
-                    System.out.println("impossible");
-                    return;
-                } else {
-                    flag = true;
-                    getIn = save.ori;
+                if (x == root) {
+                    if (flag) {
+                        System.out.println("impossible");
+                        return;
+                    } else {
+                        flag = true;
+                        ori = save.ori;
+                    }
                 }
                 if (nodes[x].visit == i) {
                     spc++;
@@ -114,32 +116,27 @@ public class DMST {
                 int oriTo = e.to;
                 e.from = nodes[e.from].sp;
                 e.to = nodes[e.to].sp;
-                if (e.from != e.to) {
-                    edges[i].cost -= nodes[oriTo].minEnterCost;
-                } else {
-                    m--;
-                    edges[i] = edges[m];
-                    i--;
-                }
+                edges[i].cost -= nodes[oriTo].minEnterCost;
+//                if (e.from != e.to) {
+//                } else {
+//                    m--;
+//                    edges[i] = edges[m];
+//                    i--;
+//                }
             }
 
             n = spc + 1;
             root = nodes[root].sp;
         }
         ans -= INF;
-        for (int i = 0; i < m; i++) {
-            if (edges[i].from == root) {
-                System.out.println(ans + " " + getIn);
-                return;
-            }
-        }
+        System.out.println(ans + " " + ori);
     }
 
     static class Node {
         Edge enter;
         int visit; // the path in which the node is visited
         int sp; // the node id for the next loop
-        int minEnterCost;
+        long minEnterCost;
 
         Node() {
             enter = null;
@@ -159,10 +156,10 @@ public class DMST {
     static class Edge {
         int from;
         int to;
-        int cost;
+        long cost;
         int ori;
 
-        public Edge(int from, int to, int cost) {
+        public Edge(int from, int to, long cost) {
             this.from = from;
             this.to = to;
             this.cost = cost;

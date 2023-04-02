@@ -42,6 +42,9 @@ public class Closer {
     }
 
     static long getMin(Point[] xRank, int xStart, int xEnd, Point[] yRank) {
+        if (xEnd - xStart + 1 <= 1) {
+            return 80000000000L;
+        }
         if (xEnd - xStart + 1 == 2) {
 //            System.out.println("From the 111: " + distance(xRank[xStart], xRank[xEnd]));
             return distance(xRank[xStart], xRank[xEnd]);
