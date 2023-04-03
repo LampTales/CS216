@@ -1,36 +1,25 @@
-package Week06;
+package Checker;
 
-import java.io.*;
+import Week04.ColorTree;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.HashMap;
+import java.util.PriorityQueue;
 import java.util.StringTokenizer;
 
 public class LRU {
 
-    static class Reader {
-        static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        static StringTokenizer tokenizer = new StringTokenizer("");
-
-        static String next() throws IOException {
-            while (!tokenizer.hasMoreTokens()) {
-                tokenizer = new StringTokenizer(reader.readLine());
-            }
-            return tokenizer.nextToken();
-        }
-
-        static int nextInt() throws IOException {
-            return Integer.parseInt(next());
-        }
-    }
-
-    public static void main(String[] args) throws IOException {
-        PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
+    public static void code() throws IOException {
+        InOutReader Reader = new InOutReader();
         int n = Reader.nextInt();
         int m = Reader.nextInt();
         int t = Reader.nextInt();
         int curTime = 0;
         Heap heap = new Heap(n + 2);
         HashMap<Integer, Node> map = new HashMap<>();
-//        StringBuilder str = new StringBuilder();
+        StringBuilder str = new StringBuilder();
         for (int i = 0; i < m; i++) {
             while (!heap.isEmpty()) {
                 if (curTime - heap.peek().enterTime > t) {
@@ -45,11 +34,9 @@ public class LRU {
             if (op == 1) {
                 Node node = map.get(Reader.nextInt());
                 if (node == null) {
-//                    str.append(-1).append("\n");
-                    out.println(-1);
+                    str.append(-1).append("\n");
                 } else {
-                    out.println(node.value);
-//                    str.append(node.value).append("\n");
+                    str.append(node.value).append("\n");
                     node.enterTime = curTime;
                     heap.modify(node);
                 }
@@ -73,12 +60,9 @@ public class LRU {
             curTime++;
         }
         while (!heap.isEmpty()) {
-            out.println(heap.pop().value);
-//            str.append(heap.pop().value).append("\n");
+            str.append(heap.pop().value).append("\n");
         }
-//        System.out.println(str);
-        out.flush();
-//        System.out.println("time taken: " + (((double)(t2 - t1)) / 1000));
+        InOutWriter.writeOutput(str.toString());
     }
 
     static class Node implements Comparable<Node> {

@@ -10,22 +10,20 @@ public class RandomGenerator {
     static Random innerRand = new Random();
 
     public static void caseGenerator() throws FileNotFoundException {
-        int n = RandomGenerator.getInt(6, 10);
+        int n = RandomGenerator.getInt(1, 100);
+        int m = RandomGenerator.getInt(30000, 40000);
+        int t = RandomGenerator.getInt(1, 1000);
         StringBuilder str = new StringBuilder();
-        str.append(n).append(" ");
-        StringBuilder aftStr = new StringBuilder();
-        int m = 0;
-        for (int i = 0; i < n; i++) {
-            for (int j = RandomGenerator.getInt(1,5); j >= 0; j--) {
-                int x = RandomGenerator.getInt(0, n - 1);
-                int cost = RandomGenerator.getInt(1, 100);
-                aftStr.append(x).append(" ").append(i).append(" ").append(cost).append("\n");
-                m++;
+        str.append(n).append(" ").append(m).append(" ").append(t).append("\n");
+        for (int i = 0; i < m; i++) {
+            int op = RandomGenerator.getInt(1, 2);
+            str.append(op).append(" ");
+            if (op == 1) {
+                str.append(RandomGenerator.getInt(0,200)).append("\n");
+            } else {
+                str.append(RandomGenerator.getInt(0,200)).append(" ").append(RandomGenerator.getInt(1, 1000)).append("\n");
             }
         }
-        str.append(m).append("\n");
-        str.append(aftStr);
-
         InOutWriter.writeInput(str.toString());
     }
 

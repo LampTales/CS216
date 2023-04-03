@@ -1,14 +1,15 @@
 package Checker;
 
 import java.io.*;
+import java.util.Scanner;
 
 import static Checker.RandomGenerator.caseGenerator;
-import static Checker.DMST.code;
+import static Checker.LRU.code;
 
 public class Verifier {
 
     public static void main(String[] args) throws IOException {
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 1000; i++) {
 
             //verifying mode
             if (!compareOut()) {
@@ -230,21 +231,14 @@ public class Verifier {
     }
 
     public static boolean compareVerify() throws IOException {
-        InOutReader sam_1_reader = new InOutReader("out_1.txt");
-        InOutReader sam_2_reader = new InOutReader("out_2.txt");
-        String str1 = sam_1_reader.next();
-        String str2 = sam_2_reader.next();
-        if (!str1.equals(str2)) {
-            System.out.printf("sam1: %s\n", str1);
-            System.out.printf("sam2: %s\n", str2);
-            return false;
-        }
-        if (!str1.equals("impossible")) {
-            str1 = sam_1_reader.next();
-            str2 = sam_2_reader.next();
+        Scanner scan1 = new Scanner(new FileInputStream(new File("out_1.txt")));
+        Scanner scan2 = new Scanner(new FileInputStream(new File("out_2.txt")));
+        if (scan1.hasNext()) {
+            String str1 = scan1.nextLine();
+            String str2 = scan2.nextLine();
             if (!str1.equals(str2)) {
-                System.out.printf("sam1: %s\n", str1);
-                System.out.printf("sam2: %s\n", str2);
+                System.out.println("sample 1: " + str1);
+                System.out.println("sample 2: " + str2);
                 return false;
             }
         }
