@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 import static Checker.RandomGenerator.caseGenerator;
-import static Checker.LRU.code;
+import static Checker.Prefix.code;
 
 public class Verifier {
 
@@ -17,7 +17,7 @@ public class Verifier {
             }
 
             //check the progress
-            if ((i + 1) % 50 == 0) {
+            if ((i + 1) % 1 == 0) {
                 System.out.printf("================================ case %d =======================================\n", i + 1);
             }
         }
@@ -233,14 +233,17 @@ public class Verifier {
     public static boolean compareVerify() throws IOException {
         Scanner scan1 = new Scanner(new FileInputStream(new File("out_1.txt")));
         Scanner scan2 = new Scanner(new FileInputStream(new File("out_2.txt")));
-        if (scan1.hasNext()) {
-            String str1 = scan1.nextLine();
-            String str2 = scan2.nextLine();
-            if (!str1.equals(str2)) {
-                System.out.println("sample 1: " + str1);
-                System.out.println("sample 2: " + str2);
-                return false;
-            }
+//        if (scan1.hasNext()) {
+//            String str1 = scan1.nextLine();
+//            String str2 = scan2.nextLine();
+//            if (!str1.equals(str2)) {
+//                System.out.println("sample 1: " + str1);
+//                System.out.println("sample 2: " + str2);
+//                return false;
+//            }
+//        }
+        if (scan1.nextLong() != scan2.nextLong()) {
+            return false;
         }
 
         return true;

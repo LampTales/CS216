@@ -10,18 +10,19 @@ public class RandomGenerator {
     static Random innerRand = new Random();
 
     public static void caseGenerator() throws FileNotFoundException {
-        int n = RandomGenerator.getInt(1, 100);
-        int m = RandomGenerator.getInt(30000, 40000);
-        int t = RandomGenerator.getInt(1, 1000);
+        int n = RandomGenerator.getInt(100000, 500000);
         StringBuilder str = new StringBuilder();
-        str.append(n).append(" ").append(m).append(" ").append(t).append("\n");
-        for (int i = 0; i < m; i++) {
-            int op = RandomGenerator.getInt(1, 2);
-            str.append(op).append(" ");
-            if (op == 1) {
-                str.append(RandomGenerator.getInt(0,200)).append("\n");
-            } else {
-                str.append(RandomGenerator.getInt(0,200)).append(" ").append(RandomGenerator.getInt(1, 1000)).append("\n");
+        for (int i = 0; i < n; i++) {
+            int ran = RandomGenerator.getInt(0,2);
+            switch (ran) {
+                case 0:
+                    str.append('0');
+                    break;
+                case 1:
+                    str.append('1');
+                    break;
+                case 2:
+                    str.append('?');
             }
         }
         InOutWriter.writeInput(str.toString());

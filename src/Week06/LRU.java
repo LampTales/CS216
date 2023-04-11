@@ -45,11 +45,9 @@ public class LRU {
             if (op == 1) {
                 Node node = map.get(Reader.nextInt());
                 if (node == null) {
-//                    str.append(-1).append("\n");
                     out.println(-1);
                 } else {
                     out.println(node.value);
-//                    str.append(node.value).append("\n");
                     node.enterTime = curTime;
                     heap.modify(node);
                 }
@@ -73,12 +71,10 @@ public class LRU {
             curTime++;
         }
         while (!heap.isEmpty()) {
-            out.println(heap.pop().value);
-//            str.append(heap.pop().value).append("\n");
+            out.print(heap.pop().value + " ");
         }
-//        System.out.println(str);
+        out.println();
         out.flush();
-//        System.out.println("time taken: " + (((double)(t2 - t1)) / 1000));
     }
 
     static class Node implements Comparable<Node> {
