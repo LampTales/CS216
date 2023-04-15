@@ -3,7 +3,6 @@ package Week07;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Prefix {
@@ -60,8 +59,6 @@ public class Prefix {
                     break;
             }
         }
-//        System.out.println(Arrays.toString(F));
-//        System.out.println(Arrays.toString(G));
 
         Complex[] fc = new Complex[len];
         Complex[] gc = new Complex[len];
