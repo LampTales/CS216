@@ -65,9 +65,8 @@ public class FFTt {
         PrintWriter out = new PrintWriter(new OutputStreamWriter(System.out));
         for (int i = 0; i < n; i++) {
             out.println(F[i + n - 1].r);
-            out.flush();
         }
-
+        out.flush();
     }
 
     static void FFT(Complex[] com, int op, int[] rev) {
