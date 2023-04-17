@@ -10,7 +10,7 @@ public class RandomGenerator {
     static Random innerRand = new Random();
 
     public static void caseGenerator() throws FileNotFoundException {
-        int n = RandomGenerator.getInt(100000, 500000);
+        int n = RandomGenerator.getInt(450000, 500000);
         StringBuilder str = new StringBuilder();
         for (int i = 0; i < n; i++) {
             int ran = RandomGenerator.getInt(0,2);

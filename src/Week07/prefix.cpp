@@ -1,7 +1,7 @@
 #include <string.h>
 #include <cmath>
 #include <iostream>
-#define MAX 1048576
+#define MAX 1048580
 using namespace std;
 
 struct complex {
@@ -23,6 +23,7 @@ struct complex {
 };
 complex fc[MAX], gc[MAX];
 int F[MAX], G[MAX];
+int rev[MAX];
 double H[MAX / 2];
 int len = 1;
 double PI = acos(-1);
@@ -61,8 +62,9 @@ bool is_zero(double x) {
 }
 
 int main() {
-    freopen("input.txt", "r", stdin);
+    // freopen("input.txt", "r", stdin);
     char str[500005];
+    
     scanf("%s", str);
     int n = strlen(str);
     int time = 0;
@@ -70,15 +72,11 @@ int main() {
         len = len << 1;
         time++;
     }
-    int rev[len];
-    rev[0] = 0;
+    
     for (int i = 0; i < len; i++) {
         rev[i] = (rev[i >> 1] >> 1) | ((i & 1) << (time - 1));
     }
-
-    // int F[len] = {0};
-    // int G[len] = {0};
-    // printf("*\n");
+   
     for (int i = 0; i < n; i++) {
         switch (str[i]) {
             case '?':
@@ -95,18 +93,12 @@ int main() {
                 break;
         }
     }
-
-    printf("%d\n", len);
-
-    for (int i = 0; i < len; i++) {
-        fc[i] = complex();
-        gc[i] = complex();
-    }
-    // double H[n / 2] = {0.0};
-
+    
     for (int i = 0; i < len; i++) {
         fc[i].r = F[i] * F[i] * F[i];
+        fc[i].i = 0;
         gc[i].r = G[i];
+        gc[i].i = 0;
     }
     FFT(fc, rev, 1);
     FFT(gc, rev, 1);
@@ -149,10 +141,10 @@ int main() {
     for (int i = 0; i < n / 2; i++) {
         H[i] += fc[i].r;
     }
-
-    long ans = is_zero(H[0]) ? 1 : 0;
+    
+    long long ans = is_zero(H[0]) ? 1 : 0;
     for (int i = 1; i < n / 2; i++) {
-        ans = ans ^ ((is_zero(H[i]) ? 1 : 0) * ((long)(i + 1)) * ((long)(i + 1)));
+        ans = ans ^ ((is_zero(H[i]) ? 1 : 0) * ((long long)(i + 1)) * (i + 1));
     }
-    printf("%ld\n", ans);
+    printf("%lld\n", ans);
 }
