@@ -31,9 +31,9 @@ public class Backpack {
         int c = Reader.nextInt();
         int cnt = 0;
         for (int i = 0; i < n; i++) {
+            int s = Reader.nextInt();
             int w = Reader.nextInt();
             int v = Reader.nextInt();
-            int s = Reader.nextInt();
             for (int j = 1; j <= s; j *= 2) {
                 V[cnt] = v * j;
                 W[cnt] = w * j;
