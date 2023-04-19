@@ -26,17 +26,17 @@
 
 #### NTT
 
-A fifth application of FFT is number-theoretic transform (NTT), which is a variant of FFT that works over finite fields instead of complex numbers. The correctness of FFT highly depends on the graceful properties of the unit root in complex complex field. In finite fields, we find out that the primordial root has the similar properties as the unit root that can support operations like FFT to work. 
+  A fifth application of FFT is number-theoretic transform (NTT), which is a variant of FFT that works over finite fields instead of complex numbers. The correctness of FFT highly depends on the graceful properties of the unit root in complex complex field. In finite fields, we find out that the primordial root has the similar properties as the unit root that can support operations like FFT to work. 
 $$
 g_{n}^{n} \equiv 1 \space\space (mod\space p) \\\\
 g_{n}^{\frac{n}{2} } \equiv -1 \space\space (mod\space p) \\\\
 (g_{n}^{k + \frac{n}{2}})^{2}  \equiv g_{n}^{2k} \space\space (mod\space p)
 $$
-Because of this, we can use NTT to speed up multiplication and convolution of large integers or polynomials  in cryptography and computer algebra. For example, NTT can be used to implement fast algorithms for modular exponentiation and discrete logarithm, which are essential for public-key cryptography schemes such as RSA and Diffie-Hellman.
+  Because of this, we can use NTT to speed up multiplication and convolution of large integers or polynomials  in cryptography and computer algebra. For example, NTT can be used to implement fast algorithms for modular exponentiation and discrete logarithm, which are essential for public-key cryptography schemes such as RSA and Diffie-Hellman.
 
 
 
-The above are some of the most important applications of FFT. Because of the universality of the format of FFT, it can be explained as different mathematically or physically meanings, and be applied to a large number of different calculations. FFT can certainly be considered as one of the the most world-changing algorithm in human history.
+  The above are some of the most important applications of FFT. Because of the universality of the format of FFT, it can be explained as different mathematically or physically meanings, and be applied to a large number of different calculations. FFT can certainly be considered as one of the the most world-changing algorithm in human history.
 
 
 
