@@ -77,6 +77,9 @@ public class FindPath {
             Node node = queue.poll();
             node.inq = false;
             for (Edge edge : node.edgeList) {
+//                if (node != edge.from) {
+//                    System.out.println("ERR!");
+//                }
                 Node son = edge.to;
                 if (son != node.pre) {
                     if (son.dis > node.dis + best * edge.cost - edge.value) {
